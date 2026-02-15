@@ -15,7 +15,7 @@
  *
  * Rules:
  *   - Check validity FIRST: if the original score is less than 0
- *     or greater than 100, return "INVALID"
+ *     or greater than 100, return npm test -- traffic-light
  *   - If hasExtraCredit is true, add 5 points AFTER validation
  *     (cap the result at 100)
  *   - Then determine the letter grade from the adjusted score
@@ -26,4 +26,24 @@
  */
 export function calculateGrade(score, hasExtraCredit) {
   // Your code here
+  
+  // Validate first
+  if (score < 0 || score > 100) {
+    return "INVALID";
+  }
+
+  // Apply extra credit
+  if (hasExtraCredit) {
+    score += 5;
+    if (score > 100) score = 100;
+  }
+
+  // Determine letter grade
+  if (score >= 90) return "A";
+  if (score >= 80) return "B";
+  if (score >= 70) return "C";
+  if (score >= 60) return "D";
+  return "F";
 }
+
+
